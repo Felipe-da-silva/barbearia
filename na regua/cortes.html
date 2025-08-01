@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Barbearia Na Régua</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Garante altura total da tela */
+    font-family: Arial, sans-serif;
+    position: relative; /* Necessário para o ::before */
+    background-image: url('/GFC-BARBER-02.webp');
+    background-size: cover;        /* Preenche a tela */
+    background-position: center;   /* Centraliza */
+    background-repeat: no-repeat;
+    background-attachment: fixed;  /* Mantém a imagem fixa ao rolar */
+    color: #ffffff;
+    }
+
+    body::before {
+     content: "";
+     position: fixed; /* Fixado na tela */
+     top: 0; left: 0; right: 0; bottom: 0;
+     background-color: rgba(0, 0, 0, 0.5); /* Sobreposição escura */
+     z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      min-height: 20vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #ffe600;
+      text-shadow: 1px 1px 2px #000;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      backdrop-filter: blur(8px);
+      width: 100%;
+      max-width: 600px;
+    }
+
+    label, select, input, textarea {
+      display: block;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    input, select, textarea {
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #ffe600;
+      color: #000;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #ffd000;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      background: rgba(245, 244, 240, 0.9);
+      color: #000;
+      padding: 15px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+    <h1>Barbearia Na Régua</h1>
+
+    <form id="formBarbearia">
+      <label>Nome:
+        <input type="text" id="nome" required>
+      </label>
+
+      <label>Idade:
+        <input type="number" id="idade" required>
+      </label>
+
+      <label>CPF:
+        <input type="text" id="cpf" required>
+      </label>
+
+      <label>Quantas vezes cortou o cabelo este mês?
+        <input type="number" id="vezes" required>
+      </label>
+
+      <label>Escolha o menu:</label>
+      <select id="opcao_menu" required>
+        <option value="1">1 - Corte Infantil</option>
+        <option value="2">2 - Corte Adulto</option>
+        <option value="3">3 - Barba</option>
+      </select>
+
+      <label id="estilo_label">Escolha o estilo:</label>
+      <select id="estilo" required></select>
+
+      <label>Avalie sua experiência (1 a 5 estrelas):
+        <input type="number" id="avaliacao" min="1" max="5" required>
+      </label>
+
+      <label>Comentário (opcional):
+        <textarea id="comentario" rows="3"></textarea>
+      </label>
+
+      <button type="submit">Finalizar Atendimento</button>
+    </form>
+
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script>
+    const infantil = [
+      "Corte Princesa", "Moicano Kids", "Riscadinho Divertido", "Social Infantil",
+      "Desenhado Herói", "Degradê Infantil", "Corte Tigelinha", "Topetinho",
+      "Corte Militarzinho", "Desenho Criativo"
+    ];
+
+    const adulto = [
+      "Social Clássico", "Degradê Baixo", "Degradê Alto", "Navalhado",
+      "Riscado Estiloso", "Moicano Moderno", "Corte Americano", "Pompadour",
+      "Corte César", "Undercut"
+    ];
+
+    const barba = [
+      "Barba Raspada", "Barba Aparada", "Barba Degradê", "Cavanhaque",
+      "Barba Cheia", "Barba com Desenho", "Barba Italiana", "Barba Quadrada",
+      "Bigode Estiloso", "Barba Viking"
+    ];
+
+    const precoBase = 50;
+
+    const menuSelect = document.getElementById("opcao_menu");
+    const estiloSelect = document.getElementById("estilo");
+
+    function atualizarEstilos() {
+      const op = parseInt(menuSelect.value);
+      estiloSelect.innerHTML = "";
+      let opcoes = [];
+
+      if (op === 1) opcoes = infantil;
+      else if (op === 2) opcoes = adulto;
+      else opcoes = barba;
+
+      opcoes.forEach((item, index) => {
+        const opt = document.createElement("option");
+        opt.value = index;
+        opt.textContent = `${index} - ${item}`;
+        estiloSelect.appendChild(opt);
+      });
+    }
+
+    menuSelect.addEventListener("change", atualizarEstilos);
+    atualizarEstilos();
+
+    document.getElementById("formBarbearia").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const nome = document.getElementById("nome").value;
+      const idade = parseInt(document.getElementById("idade").value);
+      const cpf = document.getElementById("cpf").value;
+      const vezes = parseInt(document.getElementById("vezes").value);
+      const opcao = parseInt(menuSelect.value);
+      const escolha = parseInt(estiloSelect.value);
+      const avaliacao = parseInt(document.getElementById("avaliacao").value);
+      const comentario = document.getElementById("comentario").value;
+
+      let desconto = (vezes >= 3) ? 0.25 : 0;
+      let valorFinal = precoBase - (precoBase * desconto);
+
+      let estiloEscolhido = "";
+      if (opcao === 1) estiloEscolhido = infantil[escolha];
+      else if (opcao === 2) estiloEscolhido = adulto[escolha];
+      else estiloEscolhido = barba[escolha];
+
+      const resultadoDiv = document.getElementById("resultado");
+      resultadoDiv.innerHTML = `
+        <h3>Resumo do Atendimento</h3>
+        <p><strong>Nome:</strong> ${nome}</p>
+        <p><strong>CPF:</strong> ${cpf}</p>
+        <p><strong>Estilo escolhido:</strong> ${estiloEscolhido}</p>
+        <p><strong>Preço base:</strong> R$ ${precoBase.toFixed(2)}</p>
+        <p><strong>Desconto:</strong> R$ ${(precoBase * desconto).toFixed(2)}</p>
+        <p><strong>Total a pagar:</strong> R$ ${valorFinal.toFixed(2)}</p>
+        <p><strong>Avaliação:</strong> ${avaliacao} estrela(s)</p>
+        <p><strong>Comentário:</strong> ${comentario || "Nenhum"}</p>
+        <h4>Obrigado pela visita à Barbearia Na Régua, ${nome}! Volte sempre!</h4>
+      `;
+    });
+  </script>
+</body>
+</html>

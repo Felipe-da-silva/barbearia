@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/cmto.css">
+    <title>Comentário</title>
+</head>
+<body>
+
+    <header>
+        <h1 class="logo" style="color: yellow;">Barbearia Na Régua</h1>
+        <nav class="navigation">
+            <a href="https://wa.me/5592993091862?text=meu%20whatsapp!!!">Contato</a>
+            <a href="index.html">Login</a>
+        </nav>
+
+    </header>
+
+    <section>
+        <h2 style="color: yellow;">Comente</h2>
+        <form action="https://api.staticforms.xyz/submit" method="post">
+            <label>Nome:</label>
+            <input type="text" name="name" placeholder="digite seu nome" id="nome">
+            <label>Email:</label>
+            <input type="email" name="email" placeholder="digite seu email" id="email">
+            <label for="message">Comentar:</label>
+            <textarea name="message" cols="30" rows="10" placeholder="digite seu comentário" id="message"></textarea>
+            <button type="submit" id="ID_DO_BOTAO">Enviar</button>
+
+            <input type="hidden" name="accessKey" value="cedfb652-b887-44c8-94c9-e1a07b2208e2">
+            <input type="hidden" name="redirectTo" value="http://127.0.0.1:5500/agradecimento.html">
+        </form>
+    </section>
+
+    <script>
+        var botaoclique = document.getElementById("ID_DO_BOTAO");
+        var nome = document.getElementById("nome");
+        var email = document.getElementById("email");
+        var message = document.getElementById("message");
+
+        botaoclique.addEventListener("click", function () {
+            if (email.value == "" || email.value == "" || message.value == "") {
+                alert("preencha os campos");
+            } else {
+                alert("Comentário enviado com sucesso");
+                window.location.href = "agradecimento.html";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="css/stylecad.css">
+</head>
+
+<body>
+   
+    <header>
+        <h1 class="logo" style="color: yellow;">Barbearia Na Régua</h1>
+        <nav class="navigation">
+            <a href="https://wa.me/5592993091862?text=meu%20whatsapp!!!">Contato</a>
+            <a href="coment.html">Comente</a>
+        </nav>
+    </header>
+
+    <div class="container_reg">
+            <div class="register">
+                <h2 style="color: yellow;">Cadastre-se</h2>
+                <form action="#">
+                    <div class="box-input">
+                        <label for="nome">Nome de Usuário:</label>
+                        <input type="text" required id="nome" name="nome">
+                    </div>
+                    <div class="box-input">
+                        <label for="Idade">Idade</label>
+                        <input type="idade" required id="idade" name="idade">
+                    </div>
+                    <div class="box-input">
+                        <label for="contato">contato</label>
+                        <input type="contato" required id="contato" name="contato">
+                    </div>
+                    
+                    <div class="box-input">
+                        <label for="senha">Senha</label>
+                        <input type="password" required id="senha" name="senha">
+                    </div>
+                    <button type="button" id="ID_DO_BOTAO" class="btn_reg">Cadastrar-se</button>
+                    <div class="log-register">
+                        <p>Já tenho uma conta. <a href="/Cadastro/index.html" class="registrar">Fazer login</a></p>
+                    </div>
+                </form>          
+        </div>
+
+    </div>
+    <div class="footer">
+        <h1>
+            &copy; 2025, Criado por FFZ_INF.</h1>
+    </div>
+
+    <script>
+        var botaoclique = document.getElementById("ID_DO_BOTAO");
+        var nome = document.getElementById("nome");
+        var email = document.getElementById("email");
+        var senha = document.getElementById("senha");
+
+        botaoclique.addEventListener("click", function () {
+            if (nome.value == "" || email.value == "" || senha.value == "") {
+                alert("preencha os campos");
+            } else {
+                alert("Registro feito com sucesso");
+                window.location.href = "home.html";
+            }
+        });
+
+
+    </script>
+</body>
+</html>

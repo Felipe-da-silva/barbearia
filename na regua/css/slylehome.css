@@ -1,0 +1,249 @@
+body {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 3fr 1fr;
+    width: 100%;
+    height: 100vh;
+}
+
+video {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 95%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+
+}
+
+.logo {
+    font-size: 2em;
+    color: rgb(255, 255, 255);
+    user-select: none;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 1.2em;
+    background-color: rgba(255, 255, 255, 0.598);
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: 500px;
+    margin-left: 10px;
+}
+
+.navigation a::after {
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.navigation .btnlogin {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.navigation .btnlogin:hover {
+    background: #fff;
+    color: black;
+
+}
+
+.content {
+    padding: 10px;
+    width: 300%;
+    height: 50vh;
+    overflow: auto;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(239, 244, 236, 0.603);
+}
+
+.content h1 {
+    margin: 0;
+    text-align: center;
+    padding: 10px;
+    font-size: 2.3em;
+    text-transform: uppercase;
+    color: aliceblue;
+}
+
+.content p {
+    text-align: justify;
+    margin: 10px;
+    padding: 20px;
+    font-size: 1.2em;
+    color: aliceblue;
+}
+
+.slider {
+    margin-left: 80%;
+    width: 260px;
+    height: 380px;
+    overflow: hidden;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(239, 244, 236, 0.603);
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.slides {
+    width: 500%;
+    height: 100px;
+    display: flex;
+}
+
+.slides input {
+    display: none;
+}
+
+.slide {
+    width: 25%;
+    position: relative;
+    transition: 2s;
+}
+
+.slide img{
+    padding: 10px;
+    width: 240px;
+}
+
+.manual-navigation {
+    position: absolute;
+    width: 260px;
+    margin-top: 180px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    border: 2px solid #fff;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.manual-btn:not(:last-child) {
+    margin-right: 40px;
+}
+
+.manual-btn:hover {
+    background-color: #fff;
+}
+
+#radio1:checked ~ .first {
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first {
+    margin-left: -25%;
+}
+
+#radio3:checked ~ .first {
+    margin-left: -50%;
+}
+
+#radio4:checked ~ .first {
+    margin-left: -75%;
+}
+
+.navigation-auto nav{
+    border: 2px solid blue;
+    padding: 5px;
+    border-radius: 10px;
+    cursor:pointer;
+    transition: 1s;
+}
+
+.navigation-auto{
+    position: absolute;
+    width: 800px;
+    margin-top: 360px;
+    display: flex;
+    justify-content: center;
+}
+
+.navigation-auto nav:not(:last-child){
+    margin-right: 40px;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1{
+    background-color: #fff;
+}
+
+#radio2:checked ~ .navigation-auto .auto-btn2{
+    background-color: #fff;
+}
+#radio3:checked ~ .navigation-auto .auto-btn3{
+    background-color: #fff;
+}
+#radio4:checked ~ .navigation-auto .auto-btn4{
+    background-color: #fff;
+}
+
+.footer {
+    z-index: 1;
+    font-size: 0.5em;
+    right: 100px;
+    bottom: 0;
+    left: 250px;
+    color: #fff;
+    position: absolute;
+    margin: 0;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}

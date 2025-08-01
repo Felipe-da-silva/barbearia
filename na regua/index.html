@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset=" UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="stylesheet" href="css/stylecad.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="logo" style="color: yellow;">Barbearia Na Régua</h1>
+        <nav class="navigation">
+            <a href="https://wa.me/5592993091862?text=meu%20whatsapp!!!">Contato</a>
+            <a href="coment.html">Comente</a>
+        </nav>
+    </header>
+
+    <div class="btn_log">
+        <h1>Aperte no botão abaixo</h1>
+        <button class="btnlogin">login</button>
+    </div>
+
+    <div class="container">
+        <div class="windows">
+            <h2>Login</h2>
+            <form action="#">
+                <div class="caixa-input">
+                    <label>Email</label>
+                    <input id="email" type="email" required>
+                </div>
+                <div class="caixa-input">
+                    <label>Senha</label>
+                    <input id="senha" type="password" required>
+                </div>
+                <button type="button" id="ID_DO_BOTAO" class="btn">Entrar</button>
+                <div class="login-register">
+                    <p>Não tem conta? <a href="/cadastro.html" class="registrar">Registrar</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h1 style="color: yellow;">
+            &copy;2025, Criado por Os-INF.</h1>
+    </div>
+
+    <script>
+
+
+        const container = document.querySelector('.container')
+        const btnpopup = document.querySelector('.btnlogin');
+
+        btnpopup.addEventListener('click', () => {
+            container.classList.add('active-popup');
+            
+        });
+
+        var botaoclique = document.getElementById("ID_DO_BOTAO");
+        var email = document.getElementById("email");
+        var senha = document.getElementById("senha");
+
+        botaoclique.addEventListener("click", function () {
+            if (email.value == "" || senha.value == "") {
+                alert("preencha os campos");
+            } else {
+                alert("Login feito com sucesso");
+                window.location.href = "cortes.html";
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
